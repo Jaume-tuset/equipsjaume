@@ -13,4 +13,13 @@
             <img class="imatgeInici" src=" {{ asset('assets/img/manosUnidas.jpeg') }} " /></p>
         </div>
     </div>
+    <div class="titolLlista">
+        <h3>Llistat d'Equips</h3>
+    </div>
+    <div class="llistaEquips">
+        {% for equip in equips %}
+            <li> {{ equip.nom }} </li>
+        {% endfor %}
+    </div>
+    
 {% endblock %}
