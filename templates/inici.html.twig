@@ -17,6 +17,11 @@
         <h3>Llistat d'Equips</h3>
     </div>
     <div class="llistaEquips">
+        <div id="nouMembre">
+            <a href="{{ path('nou_membre')}}">Nou Membre d'equip</a>
+        </div>
+    </div>
+    <div class="llistaEquips">
         {% for equipos in equips %}
             <li>
                 <a href="{{ path('dades_equips') }}/{{equipos.getId}}">    

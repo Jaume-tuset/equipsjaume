@@ -13,6 +13,11 @@
                     <img class="imatgeEquip" src="{{ asset(equip.imatge) }}" alt=" {{ equip.nom }} " />
                 </p>    
                 <div class="caja1">
+                    <div id="nouMembre">
+                        <a href="{{ path('nou_membre')}}">Nou Membre d'equip</a>
+                    </div>
+                </div>
+                <div class="caja1">
                     <div id="equip">
                         <ul>
                             <li><strong>Codi : </strong> {{ equip.id }}  </li>
@@ -20,6 +25,29 @@
                             <li><strong>Cicle : </strong> {{ equip.cicle }} </li>
                             <li><strong>Curs : </strong> {{ equip.curs }} </li>
                             <li><strong>Nota : </strong> {{ equip.nota }} </li>
+                            <li><strong>Membres: </strong>
+                                {% if membres %}
+                                    {% set cont = 0 %}
+                                        {% for membre in membres %}
+                                            {% if membre.getEquip.nom == equip.getNom %}
+                                                {% set cont = cont +1 %}
+                                                    <ul>
+                                                        <li>
+                                                            {{ membre.nom }}
+                                                            <a class="lapiz" href="{{ path('edicio_membre') }}/{{membre.getId}}">
+                                                            <img src="{{ asset('/assets/img/lapiz.jpeg') }}" alt="" class="lapiz" width="30px">
+                                                        </a>
+                                                        </li>
+                                                    </ul>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if cont == 0 %}
+                                            Encara no hi han membres
+                                        {% endif %}
+                                {% else %}
+                                    Encara no hi han membres
+                                {% endif %}    
+                            </li>
                         </ul>
                     </div>
                 </div>

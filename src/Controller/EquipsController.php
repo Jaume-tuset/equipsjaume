@@ -34,6 +34,7 @@ class EquipsController extends AbstractController{
         $repositori2 = $doctrine->getRepository(Membre::class);
         $equip=$repositori->find($id);
         $equips=$repositori->findAll();
+        $membres=$repositori2->findAll();
 
         /*
         if(!$equip){
@@ -44,9 +45,9 @@ class EquipsController extends AbstractController{
         * */
 
         if($equips!=null){
-            return $this->render('dades_equip.html.twig',array('equips'=>$equips,'id'=>$id));
+            return $this->render('dades_equip.html.twig',array('equips'=>$equips,'id'=>$id,'membres'=>$membres));
         }else{
-            return $this->render('dades_equip.html.twig',array('equips'=>NULL,'id'=>NULL));
+            return $this->render('dades_equip.html.twig',array('equips'=>NULL,'id'=>NULL,'membres'=>NULL));
         }
 
  }   
