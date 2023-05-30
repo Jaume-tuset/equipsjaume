@@ -83,7 +83,7 @@ h2#titolSecundari{
 #paragrafInici{
    position: absolute;
    left: 10%;
-   top: 17%;
+   top: 7%;
    width: 80%;
    border: solid black 1px;
    text-align: center;
@@ -94,11 +94,6 @@ h2#titolSecundari{
 .imatgeInici{
     width: 35%;
     margin: 10px;
-}
-
-.body{
-    border: 2px solid rebeccapurple;
-    background-color: rgb(179, 177, 177);
 }
 
 div.titolLlista{

@@ -17,9 +17,12 @@
         <h3>Llistat d'Equips</h3>
     </div>
     <div class="llistaEquips">
-        {% for equip in equips %}
-            <li> {{ equip.nom }} </li>
+        {% for equipos in equips %}
+            <li>
+                <a href="{{ path('dades_equips') }}/{{equipos.getId}}">    
+                    {{ equipos.getNom }}
+                </a>
+            </li>
         {% endfor %}
     </div>
-    
 {% endblock %}

@@ -5,31 +5,31 @@
     <link href="{{ asset('assets/css/estilsEquip.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
-    {% if equip %}
-        <h1 id="titolEquip">Dades d'Equip {{ equip.codi }} </h1>
-            <p class="paragrafEquip">PROJECTE 2N DAW
-                <br>
-                <img class="imatgeEquip" src=" {{ equip.img }} ">
-            </p>
-            <div class="caja1">
-                <div id="equip">
-                    <ul>
-                        <li><strong>Codi : </strong> {{ equip.codi }}  </li>
-                        <li><strong>Nom : </strong> {{ equip.nom }} </li>
-                        <li><strong>Code : </strong> {{ equip.cicle }} </li>
-                        <li><strong>Curs : </strong> {{ equip.curs }} </li>
-                        <li><strong>Membres : </strong> <br>
-                            {% for i in equip.membres %}
-                                <a> {{ i }} </a>
-                            {% endfor %}
-                        </li>
-                    </ul>
+    {% if equips %}     
+        {% for equip in equips %}
+            <h1 id="titolEquip">Dades d'Equip {{ equip.id }} </h1>  
+                <p class="paragrafEquip">PROJECTE 2N DAW
+                    <br>
+                    <img class="imatgeEquip" src="{{ asset(equip.imatge) }}" alt=" {{ equip.nom }} " />
+                </p>    
+                <div class="caja1">
+                    <div id="equip">
+                        <ul>
+                            <li><strong>Codi : </strong> {{ equip.id }}  </li>
+                            <li><strong>Nom : </strong> {{ equip.nom }} </li>
+                            <li><strong>Cicle : </strong> {{ equip.cicle }} </li>
+                            <li><strong>Curs : </strong> {{ equip.curs }} </li>
+                            <li><strong>Nota : </strong> {{ equip.nota }} </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <p id="inicio">
-                <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
-                <a href=" {{ path('inici') }} ">Torna a l'inici</a>
-            </p>
+                <p id="inicio">
+                    <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
+                    <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+                </p>
+            {% endfor %}
+            
+        
     {% else %}
         <h1 id="titolEquip">Dades d'Equip </h1>
         <p class="paragrafEquip">Projecte 2n DAW
@@ -43,6 +43,5 @@
                 <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
                 <a href=" {{ path('inici') }} ">Torna a l'inici</a>
         </p>
-        
     {% endif %}
 {% endblock %}

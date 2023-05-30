@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %} Equips Multiples {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href=" {{ asset('/assets/css/estilsInserits.css') }} ">
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% if error %}
+        <body>
+            <h1 id="titolInici">Projecte Symfony Equips 2n DAW</h1>
+            <h2 id="titolSecundari">Error en la inserció dels equips <br>
+                {% for equip in equips %}
+                    {{ equip.getNom }} <br>
+                {% endfor %}
+            </h2>
+            <div id="paragrafInici">
+                <img src=" {{ asset('/assets/img/mega.jpeg') }} " alt="" class="imatgeInici"><br>
+                <div class="exception"> {{ error }} </div>
+            </div>
+            <p id="inicio">
+                <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
+                <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+            </p>
+        </body>
+    {% else %}
+        <h1 id="titolInici">Projecte Symfony Equips 2n DAW</h1>
+        <h2 id="titolSecundari">Equips :<br>
+            {% for equip in equips %}
+                {{ equip.getNom }} amb id: {{ equip.getId }} <br>
+            {% endfor %}
+            Inserits correctament
+        </h2>
+        <div id="paragrafInici">
+            <img src=" {{ asset('/assets/img/mega.jpeg') }} " alt="" class="imatgeInici"><br>
+            <div class="exception"> {{ error }} </div>
+        </div>
+        <p id="inicio">
+            <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
+            <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+        </p>
+    {% endif %}
+{% endblock %}

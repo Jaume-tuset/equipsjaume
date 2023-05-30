@@ -96,56 +96,6 @@ h2#titolSecundari{
     margin: 10px;
 }
 
-.body{
-    border: 2px solid rebeccapurple;
-    background-color: rgb(179, 177, 177);
-}
-
-div.titolLlista{
-    position: absolute;
-    margin-top: 41%;
-    margin-left: 22%;
-    width: 55%;
-    padding: 1%;
-    text-align: center;
-    border: 2px solid blue;
-    background-color:#f2e7c3;
-    color: blue;
-}
-
-div.titolLlista h3{
-    font-size: 3em;
-}
-
-div.llistaEquips{
-    position: absolute;
-    margin-top: 50%;
-    margin-left: 10%;
-    width: 80%;
-    border: solid black 1px;
-    text-align: center;
-    padding: 2%;
-    background-color:#f2e7c3;
-}
-
-div.llistaEquips li{
-    border: 2px solid gray;
-    text-decoration: none;
-    text-align: center;
-    color: green;
-    padding: 1.5%;
-    background-color:#dcc784;
-    display: block;
-    width: 50%;
-    margin:10px auto;
-    font-size: 1.5em;
-}
-
-div.llistaEquips li a {
-    text-decoration: none;
-    color: greenyellow;
-}
-
 div.exception{
     border: 2px solid red;
     background-color: aquamarine;
@@ -157,7 +107,7 @@ div.exception{
 
 p#inicio{
     position: absolute;
-    top: 40%;
+    top: 43.5%;
     padding: 1%;
     left: 10%;
     width: 80%;

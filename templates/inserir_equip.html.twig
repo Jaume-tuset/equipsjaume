@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %} Inserir Equips {% endblock %}
+{% block stylesheets %}
+    {{ parent() }}        
+    <link rel="stylesheet" href=" {{ asset('/assets/css/estilsInici.css') }} ">
+{% endblock %}
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {% if error %}
+        <body>
+            <h1 id="titolInici">Projecte Symfony Equips 2n DAW</h1>
+            <h2 id="titolSecundari">Error en la inserció de l'equip {{ equip.getNom }} </h2>
+            <div id="paragrafInici">
+                <img src=" {{ asset('/assets/img/mega.jpeg') }} " alt="" class="imatgeInici"><br>
+                <div class="exception"> {{ error }} </div>
+            </div>
+            <p id="inicio">
+                <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
+                <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+            </p>
+        </body>
+    {% else %}
+        <body>
+            <h1 id="titolInici">Projecte Symfony Equips 2n DAW</h1>
+            <h2 id="titolSecundari">Equip {{ equip.getId }} amb nom {{ equip.getNom }} inserir correctament </h2>
+            <p id="paragrafInici">
+                <img src=" {{ asset(equip.getImatge) }} " alt="" class="imatgeInici">
+            </p>
+            <p id="inicio">
+                <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
+                <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+            </p>
+        </body>
+    {% endif %}
+{% endblock %}
