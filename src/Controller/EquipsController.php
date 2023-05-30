@@ -138,36 +138,29 @@ class EquipsController extends AbstractController{
     
         $error=null;
         $equip = new Equip();
-        $formulari = $this->createFormBuilder($equip)
-        ->add('nom',TextType::class)
-        ->add('cicle',TextType::class)
-        ->add('curs',TextType::class)
-        ->add('imatge',FileType::class,array('required'=>false))
-        ->add('nota',NumberType::class)
-        ->add("save",SubmiteType::class, array('label'=>'Enviar'))
-        ->getForm();
-
+        $formulari = $this->createForm(EquipNouType::class, $equip);
+        
         $formulari->handleRequest($request);
         if ($formulari->isSubmitted() && $formulari->isValid()) {
             $fitxer = $formulari->get('imatge')->getData();
             if ($fitxer) { // si s’ha indicat un fitxer al formulari
-            $nomFitxer = "/assets/img/equips/".$fitxer->getClientOriginalName();
+            $nomFitxer = "assets/img/equips/".$fitxer->getClientOriginalName();
             //ruta a la carpeta de les imatges d’equips, relativa a index.php
             //aquest directori ha de tindre permisos d’escriptura
             $directori =
-            $this->getParameter('kernel.project_dir')."/public/assets/img/equips/";
+            $this->getParameter('kernel.project_dir')."/public/assets/img/equips";
+    
             try {
                 $fitxer->move($directori,$nomFitxer);
             } catch (FileException $e) {
                 $error=$e->getMessage();
                 return $this->render('nou_equip.html.twig', array(
-                    'formulari' => $formulari->createView(), "error"=>$error));
+                'formulari' => $formulari->createView(), "error"=>$error));
             }
-            
-            $equip->setImatge($nomFitxer); // valor del camp imatge
-        } else {//no hi ha fitxer, imatge per defecte
-            $equip->setImatge('/assets/img/equips/mega.jpeg');
-        }
+                $equip->setImatge($nomFitxer); // valor del camp imatge
+            } else {//no hi ha fitxer, imatge per defecte
+                $equip->setImatge('assets/img/equips/mega.jpeg.jpg');
+            }
 
             //hem d’assignar els camps de l’equip 1 a 1
             $equip->setNom($formulari->get('nom')->getData());
@@ -176,13 +169,14 @@ class EquipsController extends AbstractController{
             $equip->setNota($formulari->get('nota')->getData());
             $entityManager = $doctrine->getManager();
             $entityManager->persist($equip);
+        
             try{
                 $entityManager->flush();
                 return $this->redirectToRoute('inici');
             }catch (\Exception $e) {
                 $error=$e->getMessage();
                 return $this->render('nou_equip.html.twig', array(
-                    'formulari' => $formulari->createView(), "error"=>$error));
+            'formulari' => $formulari->createView(), "error"=>$error));
             }
         }else{
             return $this->render('nou_equip.html.twig',
@@ -195,36 +189,28 @@ class EquipsController extends AbstractController{
         $error=null;
         $repositori = $doctrine->getRepository(Equip::class);
         $equip = $repositori->find($codi);
-        $formulari = $this->createFormBuilder($equip)
-        ->add('nom',TextType::class)
-        ->add('cicle',TextType::class)
-        ->add('curs',TextType::class)
-        ->add('imatge',FileType::class,array('mapped'=>false))
-        ->add('nota',NumberType::class)
-        ->add("save",SubmiteType::class, array('label'=>'Enviar'))
-        ->getForm();
+        $formulari = $this->createForm(EquipEditarType::class, $equip);
+        
         $formulari->handleRequest($request);
         if ($formulari->isSubmitted() && $formulari->isValid()) {
             $fitxer = $formulari->get('imatge')->getData();
             if ($fitxer) { // si s’ha indicat un fitxer al formulari
-            $nomFitxer = "/assets/img/equips/".$fitxer->getClientOriginalName();
+            $nomFitxer = "assets/img/equips/".$fitxer->getClientOriginalName();
             //ruta a la carpeta de les imatges d’equips, relativa a index.php
             //aquest directori ha de tindre permisos d’escriptura
             $directori =
             $this->getParameter('kernel.project_dir')."/public/assets/img/equips";
-            if($equip->getImatge()!="/assets/img/equips/mega.jpeg")
+            if($equip->getImatge()!="assets/img/equips/mega.jpeg")
             unlink($equip->getImatge());
 
             try {
-            $fitxer->move($directori,$nomFitxer);
+                $fitxer->move($directori,$nomFitxer);
             } catch (FileException $e) {
-
                 $error=$e->getMessage();
-        return $this->render('editar_equip.html.twig', array(
-            'formulari' => $formulari->createView(), "error"=>$error, "imatge"=>$equip->getImatge()));
-
+                return $this->render('editar_equip.html.twig', array(
+                'formulari' => $formulari->createView(), "error"=>$error, "imatge"=>$equip->getImatge()));
             }
-            $equip->setImatge($nomFitxer); // valor del camp imatge
+                $equip->setImatge($nomFitxer); // valor del camp imatge
             } 
 
             //hem d’assignar els camps de l’equip 1 a 1
@@ -234,6 +220,7 @@ class EquipsController extends AbstractController{
             $equip->setNota($formulari->get('nota')->getData());
             $entityManager = $doctrine->getManager();
             $entityManager->persist($equip);
+        
             try{
                 $entityManager->flush();
                 return $this->redirectToRoute('inici');
@@ -242,7 +229,6 @@ class EquipsController extends AbstractController{
                 return $this->render('editar_equip.html.twig', array(
                 'formulari' => $formulari->createView(), "error"=>$error,"imatge"=>$equip->getImatge()));
             }
-
         }else{
             return $this->render('editar_equip.html.twig',
             array('formulari' => $formulari->createView(),"error"=>$error,"imatge"=>$equip->getImatge()));
