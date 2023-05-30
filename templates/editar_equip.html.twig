@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+    {% block title %}
+        Formulario Editar Equipo
+    {% endblock %}
+    {% block stylesheets %}
+        {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('assets/css/estilsEquip.css') }}">
+    {% endblock %}
+    {% block body %}
+        <h1 id="titolInici">Editar Equip</h1>
+        <div id="paragrafInici">
+            {{ form_start(formulari) }}
+            {{ form_widget(formulari) }}
+            {{ form_end(formulari) }}
+        </div>
+        <p id="inicio">
+            <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
+            <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+        </p>
+    {% endblock %}

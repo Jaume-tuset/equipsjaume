@@ -26,6 +26,10 @@
                 <p id="inicio">
                     <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
                     <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+                    <a class="lapiz" href="{{ path('edicio_equip') }}/{{equipos.getId}}">
+                        <img src="{{ asset('/assets/img/lapiz.jpeg') }}" alt="" class="lapiz" width="30px">Editar l'equip
+                    </a>
+                </a>
                 </p>
             {% endfor %}
             

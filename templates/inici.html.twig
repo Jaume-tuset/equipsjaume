@@ -20,7 +20,10 @@
         {% for equipos in equips %}
             <li>
                 <a href="{{ path('dades_equips') }}/{{equipos.getId}}">    
-                    {{ equipos.getNom }}
+                    {{ equipos.getNom }}(nota: {{ equipos.getNota}} )
+                    <a class="lapiz" href="{{ path('edicio_equip') }}/{{equipos.getId}}">
+                        <img src="{{ asset('/assets/img/lapiz.jpeg') }}" alt="" class="lapiz" width="30px">
+                    </a>
                 </a>
             </li>
         {% endfor %}
