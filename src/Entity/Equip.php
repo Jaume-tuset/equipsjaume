@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\EquipRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -12,19 +12,27 @@ class Equip
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    
+    #[Assert\NotBlank]
     #[ORM\Column(length: 50, unique:true)]
     private ?string $nom = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 10)]
     private ?string $cicle = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 10)]
     private ?string $curs = null;
 
     #[ORM\Column(length: 255)]
     private ?string $imatge = null;
 
+    
+    #[Assert\NotBlank] 
+    #[Assert\Type(type: 'numeric',message:'El valor {{ value }} no es valido {{ type }}.')]
+    #[Assert\LessThanOrEqual(10, message:'La nota ha de ser menor o igual que 10')]
+    #[Assert\GreaterThanOrEqual(0, message:'La nota ha de ser major o igual que 0')]
     #[ORM\Column(nullable: true)]
     private ?float $nota = null;
 
