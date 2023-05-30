@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\Equip;
 use App\Entity\Membre;
 use App\Service\ServeiDadesEquips;
+use Doctrine\DBAL\Types\TextType;
 use Doctrine\Persistence\ManagerRegistry;
 use phpDocumentor\Reflection\Types\Null_;
 use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -126,6 +130,63 @@ class EquipsController extends AbstractController{
             return $this->render('filtrar_notes_equip.html.twig',array('equips'=>$equips));
         }else{
             return $this->render('filtrar_notes_equip.html.twig',array('equips'=>NULL));
+        }
+    }
+    
+    #[Route('/equip/nou/' ,name:'nou_equip')]
+    public function nou(ManagerRegistry $doctrine, Request $request){
+    
+        $error=null;
+        $equip = new Equip();
+        $formulari = $this->createFormBuilder($equip)
+        ->add('nom',TextType::class)
+        ->add('cicle',TextType::class)
+        ->add('curs',TextType::class)
+        ->add('imatge',FileType::class,array('required'=>false))
+        ->add('nota',NumberType::class)
+        ->add("save",SubmiteType::class, array('label'=>'Enviar'))
+        ->getForm();
+
+        $formulari->handleRequest($request);
+        if ($formulari->isSubmitted() && $formulari->isValid()) {
+            $fitxer = $formulari->get('imatge')->getData();
+            if ($fitxer) { // si s’ha indicat un fitxer al formulari
+            $nomFitxer = "/assets/img/equips/".$fitxer->getClientOriginalName();
+            //ruta a la carpeta de les imatges d’equips, relativa a index.php
+            //aquest directori ha de tindre permisos d’escriptura
+            $directori =
+            $this->getParameter('kernel.project_dir')."/public/assets/img/equips/";
+            try {
+                $fitxer->move($directori,$nomFitxer);
+            } catch (FileException $e) {
+                $error=$e->getMessage();
+                return $this->render('nou_equip.html.twig', array(
+                    'formulari' => $formulari->createView(), "error"=>$error));
+            }
+            
+            $equip->setImatge($nomFitxer); // valor del camp imatge
+        } else {//no hi ha fitxer, imatge per defecte
+            $equip->setImatge('/assets/img/equips/mega.jpeg');
+        }
+
+            //hem d’assignar els camps de l’equip 1 a 1
+            $equip->setNom($formulari->get('nom')->getData());
+            $equip->setCicle($formulari->get('cicle')->getData());
+            $equip->setCurs($formulari->get('curs')->getData());
+            $equip->setNota($formulari->get('nota')->getData());
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($equip);
+            try{
+                $entityManager->flush();
+                return $this->redirectToRoute('inici');
+            }catch (\Exception $e) {
+                $error=$e->getMessage();
+                return $this->render('nou_equip.html.twig', array(
+                    'formulari' => $formulari->createView(), "error"=>$error));
+            }
+        }else{
+            return $this->render('nou_equip.html.twig',
+            array('formulari' => $formulari->createView(),"error"=>$error));
         }
     }
 }
