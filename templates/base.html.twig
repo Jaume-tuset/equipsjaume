@@ -51,18 +51,21 @@
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Team</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">Dades</a>
+            {% if is_granted('ROLE_ADMIN')  %}
+              <li><a href="#">Dades</a>
                 <ul>
-                    <li><a href="#">despregable 1 </a></li>
+                    <li><a href="{{ path('usuari') }}">Usuaris</a></li>
                     <li><a href="#">Inserir</a>
                         <ul>
                             <li><a href="{{ path('nou_equip') }} ">Equip </a></li>
                             <li><a href="{{ path('inserir_equips') }}">Multiples Equips</a></li>
                             <li><a href="{{ path('nou_membre') }} ">Membre </a></li>
+                            <li><a href="{{ path('nou_usuari') }}">Usuari</a></li>
                         </ul>                        
                     </li>
                 </ul>  
-                <li><a href="#">Contactans</a></li>
+            {% endif %}
+            <li><a href="#">Contactans</a></li>
             </li>
         </ul>
       </nav>

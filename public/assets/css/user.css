@@ -1,0 +1,89 @@
+body{
+    background-color: #DDD;
+}   
+
+.encabezado{
+    background-color: green;
+}
+
+.encabezado nav .titulo{
+    color: white;
+}
+
+.encabezado nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.encabezado nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.encabezado nav ul a {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px 20px;
+    color: white;
+    display: block;
+}
+
+.encabezado nav ul a:hover{
+    background-color: burlywood;
+}
+
+.encabezado nav ul li ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: green;
+    display: none;
+}
+
+.encabezado nav ul li ul li{
+    width: 200px;
+    position: relative;
+
+}
+
+.encabezado nav ul li ul li ul {
+    top: 0;
+    left: 160px;
+    position: absolute;
+}
+
+.encabezado nav ul li:hover > ul {
+    display: block;
+}
+
+h1.titolInici {
+    width: 50%;
+    color: red;
+    border: solid red 1px;
+    margin: 30px auto;
+    text-align:center;
+    padding:10px;
+    background-color:white;
+}
+
+h2.titolSecundari {
+    border: 1px solid black;
+    background-color: white;
+    color: blue;
+    width: 35%;
+    margin: 30px auto;
+    padding: 10px;
+}
+   
+div.paragrafInici{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    gap: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+    

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}Editar Usuari {% endblock %}
+{% block body %}
+    <br>
+    <div class="contenidor">
+        <h1>Editar Usuari</h1>
+        {{ form_start(formulari) }}
+        {{ form_widget(formulari) }}
+        {{ form_end(formulari) }}
+    </div>
+    <br><br><br>
+{% endblock %}
