@@ -1,0 +1,94 @@
+body{
+    background-color: #DDD;
+}   
+
+.encabezado{
+    background-color: green;
+}
+
+.encabezado nav .titulo{
+    color: white;
+}
+
+.encabezado nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.encabezado nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.encabezado nav ul a {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px 20px;
+    color: white;
+    display: block;
+}
+
+.encabezado nav ul a:hover{
+    background-color: burlywood;
+}
+
+.encabezado nav ul li ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: green;
+    display: none;
+}
+
+.encabezado nav ul li ul li{
+    width: 200px;
+    position: relative;
+
+}
+
+.encabezado nav ul li ul li ul {
+    top: 0;
+    left: 160px;
+    position: absolute;
+    
+}
+
+.encabezado nav ul li:hover > ul {
+    display: block;
+}
+
+h1#titolLogin {
+    width: 50%;
+    color: red;
+    border: solid red 1px;
+    margin: 10px auto;
+    text-align:center;
+    padding:10px;
+    background-color:white;
+}
+
+div#paragrafLogin{
+    position: relative;
+    width: 80%;
+    border: solid black 1px;
+    margin: 10px auto;
+    text-align:center;
+    padding:10px;
+    background-color:#f2e7c3;
+}
+form{
+    font-size: 20px;
+}
+#username{
+    width:20%;
+}
+#password{
+    width:20%;
+}
+
+#paragrafLogin a:hover{
+    color:#5cb874;
+}
