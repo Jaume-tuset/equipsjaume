@@ -30,10 +30,15 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('assets/css/navbar.css') }}" rel="stylesheet">
-
 </head>
 <body>
   {% block header %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+      <div class="login">
+          Benvingut/da, {{ app.user.username }}        
+        <a href ="{{ path('logout') }}">Tancar sessió</a>
+      </div>     
+    {% endif %}
     <header class="encabezado">
       <nav>
         <div class="titulo">
@@ -61,6 +66,7 @@
             </li>
         </ul>
       </nav>
+
     </header>
 
   {% endblock %}
