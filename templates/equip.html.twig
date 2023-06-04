@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block title %}Equips{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/css/estilsEquip.css') }}" rel="stylesheet">
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block body %}
+    {{ include ('dades_equip.html.twig', {'equip': equip, 'codi':codi }) }}
+{% endblock %}

@@ -1,36 +1,38 @@
 {% extends 'base.html.twig' %}
-{% block title %} Inserir Equips {% endblock %}
+{% block title %}Equips
+{% endblock %}
 {% block stylesheets %}
-    {{ parent() }}        
-    <link rel="stylesheet" href=" {{ asset('/assets/css/estilsInici.css') }} ">
+	<link href="{{ asset('assets/css/estilsInici.css') }}" rel="stylesheet">
 {% endblock %}
 {% block header %}
-    {{ parent() }}
+	{{ parent() }}
 {% endblock %}
 {% block body %}
-    {% if error %}
-        <body>
-            <h1 id="titolInici">Projecte Symfony Equips 2n DAW</h1>
-            <h2 id="titolSecundari">Error en la inserció de l'equip {{ equip.getNom }} </h2>
-            <div id="paragrafInici">
-                <img src=" {{ asset('/assets/img/mega.jpeg') }} " alt="" class="imatgeInici"><br>
-                <div class="exception"> {{ error }} </div>
-            </div>
-            <p id="inicio">
-                <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
-                <a href=" {{ path('inici') }} ">Torna a l'inici</a>
-            </p>
+	{% if error %}
+		<body>
+			<h1 id="titolInici">Projecte Symphony Equips 2n DAW
+			</h1>
+			<h2 id="titolSecundari">Error en la inserció de l'equip
+				{{ equips.getNom }}
+			</h2>
+			<p id="paragrafInici">
+				<img class="imatgeInici" src="{{ asset('assets/img/tristeza.jpeg') }}"/></br>
+    			<div class="exception">{{ error }}</div>
+           	</p>
+	        <p id="paragrafInici">
+		        <a class="nav-link" href="{{ path('inici') }} ">Tornar a l'inici</a>
+	        </p>
         </body>
     {% else %}
         <body>
-            <h1 id="titolInici">Projecte Symfony Equips 2n DAW</h1>
-            <h2 id="titolSecundari">Equip {{ equip.getId }} amb nom {{ equip.getNom }} inserir correctament </h2>
-            <p id="paragrafInici">
-                <img src=" {{ asset(equip.getImatge) }} " alt="" class="imatgeInici">
-            </p>
-            <p id="inicio">
-                <img src=" {{ asset('assets/img/casa.png') }}  " alt="">
-                <a href=" {{ path('inici') }} ">Torna a l'inici</a>
+	        <h1 id="titolInici">Projecte Symphony Equips 2n DAW</h1>
+	        <h2 id="titolSecundari">Equip {{ equips.getId }} amb nom {{ equips.getNom }} insertit correctament </h2>
+	        <p id="paragrafInici">
+		        <img class="imatgeInici" src="{{ asset('assets/img/alegria.jpeg') }}"/>
+	        </p>
+	        <p id="paragrafInici">
+                <img src="https://img.icons8.com/emoji/48/null/house-emoji.png" href="{{ path('inici') }}"/>
+                <a href="{{ path('inici') }} ">Torna a l'inici</a>
             </p>
         </body>
     {% endif %}

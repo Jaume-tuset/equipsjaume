@@ -1,0 +1,167 @@
+body{
+    background-color: #DDD;
+}   
+
+.encabezado{
+    background-color: green;
+}
+
+.encabezado nav .titulo{
+    color: white;
+}
+
+.encabezado nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+
+.encabezado nav ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.encabezado nav ul a {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px 20px;
+    color: white;
+    display: block;
+}
+
+.encabezado nav ul a:hover{
+    background-color: burlywood;
+}
+
+.encabezado nav ul li ul {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: green;
+    display: none;
+}
+
+.encabezado nav ul li ul li{
+    width: 200px;
+    position: relative;
+
+}
+
+.encabezado nav ul li ul li ul {
+    top: 0;
+    left: 160px;
+    position: absolute;
+    
+}
+
+.encabezado nav ul li:hover > ul {
+    display: block;
+}
+
+h1#titolInici {
+    width: 50%;
+    color: red;
+    border: solid red 1px;
+    margin: 30px auto;
+    text-align:center;
+    padding:10px;
+    background-color:white;
+}
+   
+#paragrafInici{
+   position: absolute;
+   left: 10%;
+   top: 13.5%;
+   width: 80%;
+   border: solid black 1px;
+   text-align: center;
+   padding:10px;
+   background-color:#f2e7c3;
+}
+    
+.body{
+    border: 2px solid rebeccapurple;
+    background-color: rgb(179, 177, 177);
+}
+
+h1#titolEquip{
+    width: 50%;
+    color: red;
+    border: solid red 1px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.imatgeEquip{
+    width: 400px;
+    margin: 10px;
+}
+
+
+.paragrafEquip{
+    position: relative;
+    width: 80%;
+    border: solid black 1px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2e7c3;
+
+}
+
+.caja1{
+    position: relative;
+    width: 80%;
+    border: solid black 1px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2e7c3;
+}
+
+.caja1 ul li {
+    list-style: none;
+    display: block;
+    border: 4px solid black;
+    width : 30%;
+    text-align: left;
+    padding: 1%;
+    margin: 10px auto;
+}
+
+.caja1 ul li a{
+    border: 3px solid black;
+    display: block;
+    padding: 3%;
+    text-transform: uppercase;
+    background-color: lightgray;
+}
+
+p#inicio{
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    width: 80%;
+    border: solid black 1px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2e7c3;
+}
+
+div#paragrafImatge{
+    position: absolute;
+    margin: 10px auto;
+    top: 25%;
+    left: 10%;
+    width: 80%;
+    border: solid black 1px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 10px;
+    background-color: #f2e7c3;
+}

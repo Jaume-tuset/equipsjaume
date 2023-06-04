@@ -5,8 +5,7 @@
     <link href="{{ asset('assets/css/estilsEquip.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
-    {% if equips %}     
-        {% for equip in equips %}
+    {% if equip %}     
             <h1 id="titolEquip">Dades d'Equip {{ equip.id }} </h1>  
                 <p class="paragrafEquip">PROJECTE 2N DAW
                     <br>
@@ -59,9 +58,6 @@
                     </a>
                 </a>
                 </p>
-            {% endfor %}
-            
-        
     {% else %}
         <h1 id="titolEquip">Dades d'Equip </h1>
         <p class="paragrafEquip">Projecte 2n DAW
